@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clash Infrastructure Status</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="bg-layer" aria-hidden="true"></div>
+    <div class="layout">
+      <header class="masthead">
+        <div class="brand">
+          <span class="brand-chip">Status</span>
+          <div>
+            <p class="brand-overline">CLASH INFRASTRUCTURE</p>
+            <h1>Operational Dashboard</h1>
+          </div>
+        </div>
+        <div class="toolbar">
+          <p class="sync-time" id="last-updated">Loading latest status...</p>
+          <button id="refresh-btn" type="button">Run Check</button>
+        </div>
+      </header>
+
+      <main class="content">
+        <section class="status-banner unknown" id="overall-card">
+          <div class="banner-indicator">
+            <span class="status-dot unknown" id="overall-dot"></span>
+            <span class="banner-label" id="overall-label">Monitoring</span>
+          </div>
+          <div class="banner-copy">
+            <h2 id="overall-title">Collecting system state</h2>
+            <p id="overall-desc">
+              Checking service endpoints and generating live health signals.
+            </p>
+          </div>
+        </section>
+
+        <section class="metric-grid">
+          <article class="metric-card">
+            <p class="metric-label">Service Health</p>
+            <p class="metric-value" id="kpi-health">- / -</p>
+            <p class="metric-sub" id="kpi-health-sub">Operational services</p>
+          </article>
+          <article class="metric-card">
+            <p class="metric-label">Average Latency</p>
+            <p class="metric-value" id="kpi-latency">n/a</p>
+            <p class="metric-sub" id="kpi-latency-sub">Latest successful checks</p>
+          </article>
+          <article class="metric-card">
+            <p class="metric-label">Fleet Uptime (24h)</p>
+            <p class="metric-value" id="kpi-uptime">n/a</p>
+            <p class="metric-sub" id="kpi-uptime-sub">Across monitored components</p>
+          </article>
+          <article class="metric-card">
+            <p class="metric-label">Incidents (72h)</p>
+            <p class="metric-value" id="kpi-incidents">0 active</p>
+            <p class="metric-sub" id="kpi-incidents-sub">No ongoing incidents</p>
+          </article>
+        </section>
+
+        <section class="panel">
+          <div class="panel-head">
+            <h3>Services</h3>
+            <p>Real-time component availability and response profile</p>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Service</th>
+                  <th>Status</th>
+                  <th>Response</th>
+                  <th>Uptime 24h</th>
+                  <th>Uptime 7d</th>
+                  <th>History (24h)</th>
+                </tr>
+              </thead>
+              <tbody id="services-body"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-head">
+            <h3>Incident Timeline</h3>
+            <p>Recent events within the last 72 hours</p>
+          </div>
+          <ul class="incident-list" id="incidents-list"></ul>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>
